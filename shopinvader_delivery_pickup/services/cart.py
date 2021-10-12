@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.addons.base_rest.components.service import to_int
+from odoo.addons.base_rest import restapi
 from odoo.addons.component.core import Component
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
@@ -13,6 +14,12 @@ class CartService(Component):
 
     # Public services
 
+    @restapi.method(
+        routes=[(["/set_delivery_pickup"], "POST")],
+        input_param=restapi.CerberusValidator(
+            "_validator_set_delivery_pickup"
+        )
+    )
     def set_delivery_pickup(self, **params):
         """
             This service will apply the given pickup site AND the linked
@@ -30,7 +37,7 @@ class CartService(Component):
     # Validator
 
     def _validator_set_delivery_pickup(self):
-        return {"pickup_site_id": {"coerce": to_int}}
+        return {"pickup_site_id": {"type": "integer", "coerce": to_int}}
 
     # Services implementation
 

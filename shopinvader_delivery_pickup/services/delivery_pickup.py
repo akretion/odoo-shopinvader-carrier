@@ -78,6 +78,13 @@ class DeliveryPickupService(Component):
             "zip": {"type": "string", "nullable": True},
             "city": {"type": "string", "nullable": True},
             "phone": {"type": "string", "nullable": True},
+            "partner_shipping": {
+                "type": "dict",
+                "nullable": True,
+                "schema": {
+                    "id": {"type": "integer", "required": True},
+                },
+            },
             "state": {
                 "type": "dict",
                 "nullable": True,
@@ -156,6 +163,7 @@ class DeliveryPickupService(Component):
             "zip",
             "city",
             "phone",
+            ("partner_id:partner_shipping", ["id"]),
             ("state_id:state", ["id", "name"]),
             ("country_id:country", ["id", "name"]),
             ("carrier_id:carrier", ["id", "name"]),
