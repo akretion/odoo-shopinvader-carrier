@@ -5,7 +5,6 @@ from odoo.addons.base_rest.components.service import to_int
 from odoo.addons.component.core import Component
 from odoo.osv.expression import FALSE_DOMAIN
 
-
 class DeliveryPickupService(Component):
     _inherit = "base.shopinvader.service"
     _name = "shopinvader.delivery.pickup.service"
@@ -119,6 +118,9 @@ class DeliveryPickupService(Component):
                         "dayofweek": {"type": "string", "nullable": True},
                         "hour_from": {"type": "number", "nullable": True},
                         "hour_to": {"type": "number", "nullable": True},
+                        "hour_from_string": {"type": "string", "nullable": True},
+                        "hour_to_string": {"type": "string", "nullable": True},
+                        "available_online": {"type": "boolean", "nullable": True},
                     },
                 },
             },
@@ -171,4 +173,10 @@ class DeliveryPickupService(Component):
         ]
 
     def _json_parser_attendances(self):
-        return ["id", "hour_from", "hour_to", "dayofweek"]
+        return ["id",
+                "hour_from",
+                "hour_to",
+                "hour_from_string",
+                "hour_to_string",
+                "dayofweek",
+                "available_online"]

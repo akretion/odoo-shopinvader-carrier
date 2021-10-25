@@ -14,7 +14,7 @@
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
     "depends": ["shopinvader_delivery_carrier", "delivery_dropoff_site"],
-    "data": [],
+    "data": ["views/view_pickup.xml"],
     "demo": [],
     "qweb": [],
 }

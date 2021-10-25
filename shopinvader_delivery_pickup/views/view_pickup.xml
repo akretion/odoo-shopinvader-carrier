@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_partner_dropoff_site_form" model="ir.ui.view">
+        <field name="model">dropoff.site</field>
+        <field name="inherit_id" ref="delivery_dropoff_site.view_partner_dropoff_site_form"/>
+        <field name="arch" type="xml">
+            <field name="calendar_id" position="attributes">
+                <attribute name="invisible">False</attribute>
+            </field>
+            <field name="hour_to" position="after">
+                <field name="available_online" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_resource_calendar_attendance_tree" model="ir.ui.view">
+        <field name="model">resource.calendar.attendance</field>
+        <field name="inherit_id" ref="resource.view_resource_calendar_attendance_tree"/>
+        <field name="arch" type="xml">
+            <field name="day_period" position="after">
+                <field name="available_online" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
